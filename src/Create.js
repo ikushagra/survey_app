@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-
+import MultiQuest from "./MultiQuest";
+import SingleQuest from "./SingleQuest";
 export default function Create(props) {
-  const [question, setQuestion] = useState([
+  const [question] = useState([
     {
       label: "single",
       value: "single"
@@ -27,8 +28,7 @@ export default function Create(props) {
           {question.map((option) => {
             return (
               <option key={option.value} value={option.value}>
-                {" "}
-                {option.label}{" "}
+                {option.label}
               </option>
             );
           })}
@@ -43,13 +43,12 @@ export default function Create(props) {
           {question.map((option) => {
             return (
               <option key={option.value} value={option.value}>
-                {" "}
-                {option.label}{" "}
+                {option.label}
               </option>
             );
           })}
         </select>
-        single
+        <SingleQuest />
       </div>
     );
   } else if (selection === "multi") {
@@ -60,13 +59,12 @@ export default function Create(props) {
           {question.map((option) => {
             return (
               <option key={option.value} value={option.value}>
-                {" "}
-                {option.label}{" "}
+                {option.label}
               </option>
             );
           })}
         </select>
-        hiiii
+        <MultiQuest />
       </div>
     );
   } else {
@@ -76,8 +74,7 @@ export default function Create(props) {
           {question.map((option) => {
             return (
               <option key={option.value} value={option.value}>
-                {" "}
-                {option.label}{" "}
+                {option.label}
               </option>
             );
           })}
