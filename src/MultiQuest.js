@@ -13,6 +13,7 @@ export default function MultiQuest() {
   };
   var d = new Date();
 
+  const input = document.getElementById("input");
   const addToAnswer = () => {
     setAnslist([
       ...anslist,
@@ -22,7 +23,10 @@ export default function MultiQuest() {
       }
     ]);
   };
-  const removeAns = (index) => {};
+  const removeAns = (id) => {
+    const res = anslist.filter((word) => word.id !== id);
+    setAnslist(res);
+  };
   console.log(anslist.id);
   return (
     <div>
@@ -32,11 +36,17 @@ export default function MultiQuest() {
       <div>
         {anslist.map((ans, index) => (
           <div>
-            <input key={index} value={ans.value} />
-            <button onClick={() => removeAns(index)}>-</button>
+            <input key={ans.id} value={ans.value} />
+            <button
+              onClick={() => {
+                removeAns(ans.id);
+              }}
+            >
+              -
+            </button>
           </div>
         ))}
-        <input value={answerQuest} onChange={handleMultiSurveyAns} />{" "}
+        <input id="input" value={answerQuest} onChange={handleMultiSurveyAns} />{" "}
         <button onClick={addToAnswer}>ADD</button>{" "}
       </div>
     </div>
